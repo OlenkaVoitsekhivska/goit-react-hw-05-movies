@@ -1,0 +1,18 @@
+.link{
+    color:black;
+    text-decoration: none;
+    
+}
+.link:first-child{
+    margin-right:30px;
+}
+.activeLink{
+    color:red;
+}
+nav{
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+    height: 50px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
