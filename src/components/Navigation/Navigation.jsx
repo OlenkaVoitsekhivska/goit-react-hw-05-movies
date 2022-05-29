@@ -1,13 +1,13 @@
 import { NavLink } from 'react-router-dom';
 // import { useState } from 'react';
-// import s from './Navigation.module.css';
+import s from './Navigation.module.css';
 
 export default function Navigation() {
 
   // const [active, setActive] = useState(true);
 
   return (
-    <nav>
+    <nav className={s.navigation}>
       <NavLink
         to="/"
         style={({ isActive }) => {
