@@ -19,15 +19,12 @@ export async function fetchTrending() {
   }
 }
 
- export async function fetchMoviesByKeyword() {
+ export async function fetchMoviesByKeyword(searchQuery) {
   try {
-    // Loading.pulse({
-    //   svgColor: 'orange',
-    // });
     const { data } = await axios('search/movie', {
       params: {
         api_key: API_KEY,
-        query: this.searchQuery,
+        query: `${searchQuery}`,
       },
     });
     return data.results; //returns an OBJECT. e.g.{page: 1, results: Array(20), total_pages: 8, total_results: 147}
@@ -82,3 +79,4 @@ export async function fetchCast(movieId){
           console.log(error);
         }
 }
+
