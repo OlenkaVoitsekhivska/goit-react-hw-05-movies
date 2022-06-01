@@ -1,6 +1,6 @@
-import { fetchReviews } from "components/ServiceApi/ServiceApi";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { fetchReviews } from 'components/ServiceApi/ServiceApi';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 export default function Reviews() {
   const { movieId } = useParams();
@@ -9,11 +9,10 @@ export default function Reviews() {
   useEffect(() => {
     fetchReviews(movieId).then(res => setReviews(res.results));
   }, [movieId]);
- 
 
   return (
     <ul>
-      {reviews &&
+      {reviews && reviews.length ? (
         reviews.map(review => {
           return (
             <li key={review.id}>
@@ -21,7 +20,10 @@ export default function Reviews() {
               <p>{review.content}</p>
             </li>
           );
-        })}
+        })
+      ) : (
+        <h2>No reviews yet</h2>
+      )}
     </ul>
   );
 }

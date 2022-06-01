@@ -1,0 +1,34 @@
+.moviePage {
+    display: flex;
+}
+
+.movieInfoWrap {
+    padding-left: 20px;
+}
+
+img {
+    display: block;
+    object-fit: cover;
+}
+
+.additionalInfo {
+    padding: 10px 25px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+#backBtn {
+    background-color: pink;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    color: white;
+    font-weight: 700;
+    background-color: #0837d1;
+}
+
+#backBtn:hover,
+#backBtn:active {
+    cursor: pointer;
+    background-color: #3659c9;
+}
+

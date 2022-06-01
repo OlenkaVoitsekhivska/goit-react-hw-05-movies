@@ -1,25 +1,23 @@
 import axios from 'axios';
+
 const API_KEY = '7a92417a5af1e8667d171d8c5ef3af4e';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 
-
 export async function fetchTrending() {
   try {
-
     const { data } = await axios('trending/movie/day', {
       params: {
         api_key: API_KEY,
         page: 1,
       },
     });
-
     return data.results;
   } catch (error) {
     console.log(error);
   }
 }
 
- export async function fetchMoviesByKeyword(searchQuery) {
+export async function fetchMoviesByKeyword(searchQuery) {
   try {
     const { data } = await axios('search/movie', {
       params: {
@@ -40,7 +38,6 @@ export async function fetchMovieById(movieId) {
       //for this to work make sure this.searchQuery type is number!!!
       params: {
         api_key: API_KEY,
-      
       },
     });
     return data;
@@ -49,34 +46,30 @@ export async function fetchMovieById(movieId) {
   }
 }
 
-
-export async function fetchReviews(movieId){
-    try{
+export async function fetchReviews(movieId) {
+  try {
     const { data } = await axios(`movie/${movieId}/reviews`, {
-        //for this to work make sure this.searchQuery type is number!!!
-        params: {
-          api_key: API_KEY,
-        
-        },
-      });
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
+      //for this to work make sure this.searchQuery type is number!!!
+      params: {
+        api_key: API_KEY,
+      },
+    });
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-export async function fetchCast(movieId){
-    try{
-        const { data } = await axios(`movie/${movieId}/credits`, {
-            //for this to work make sure this.searchQuery type is number!!!
-            params: {
-              api_key: API_KEY,
-            
-            },
-          });
-          return data;
-        } catch (error) {
-          console.log(error);
-        }
+export async function fetchCast(movieId) {
+  try {
+    const { data } = await axios(`movie/${movieId}/credits`, {
+      //for this to work make sure this.searchQuery type is number!!!
+      params: {
+        api_key: API_KEY,
+      },
+    });
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 }
-
