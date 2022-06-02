@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react';
-import { fetchMoviesByKeyword } from 'components/ServiceApi/ServiceApi';
-import { Link, useSearchParams, useNavigate } from 'react-router-dom';
+// import { fetchMoviesByKeyword } from 'components/services/ServiceApi';
+import { fetchMoviesByKeyword } from 'services/ServiceApi';
+import {
+  Link,
+  useSearchParams,
+  useNavigate,
+  useLocation,
+} from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 export default function MoviesPage() {
@@ -8,6 +14,8 @@ export default function MoviesPage() {
   const [moviesByKey, setMoviesByKey] = useState([]);
   const [isActive, setIsActive] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
+
+  let location = useLocation(); //Location
 
   let navigate = useNavigate();
 
@@ -44,8 +52,8 @@ export default function MoviesPage() {
           navigate('./');
           return;
         }
+
         setMoviesByKey(res);
-        setInput(''); //clearing input after data's been set
       });
     }
   }, [navigate, searchParams]);
@@ -62,7 +70,15 @@ export default function MoviesPage() {
         moviesByKey.map(item => {
           return (
             <li key={item.id}>
-              <Link to={`${item.id}`}>{item.original_title}</Link>
+              {/* <Link to={`${item.id}`}>{item.original_title} </Link> */}
+              <Link
+                to={{
+                  pathname: `${item.id}`,
+                  state: { from: location },
+                }}
+              >
+                {item.original_title}{' '}
+              </Link>
             </li>
           );
         })}

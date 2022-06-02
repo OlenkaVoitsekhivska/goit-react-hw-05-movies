@@ -1,9 +1,9 @@
-import { fetchTrending } from 'components/ServiceApi/ServiceApi';
+// import { fetchTrending } from 'components/services/ServiceApi';
+import { fetchTrending } from 'services/ServiceApi';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Trending() {
-  //   const currentLocation = window.location.href;
   const [trendingMovies, setTrendingMovies] = useState(null);
 
   useEffect(() => {

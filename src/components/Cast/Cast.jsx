@@ -1,4 +1,5 @@
-import { fetchCast } from 'components/ServiceApi/ServiceApi';
+
+import { fetchCast } from 'services/ServiceApi';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 

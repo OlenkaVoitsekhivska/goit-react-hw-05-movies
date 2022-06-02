@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Routes, Route, useParams, useNavigate } from 'react-router-dom';
-import { fetchMovieById } from 'components/ServiceApi/ServiceApi';
+import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
+
+import { fetchMovieById } from 'services/ServiceApi';
 import s from './MovieDetailsView.module.css';
-// import Cast from "components/Cast/Cast";
-// import Reviews from "components/Reviews/Reviews";
+
 import { lazy, Suspense } from 'react';
 import Loader from 'components/Loader/Loader';
 
@@ -14,6 +14,7 @@ const Reviews = lazy(() => import('components/Reviews/Reviews.jsx'));
 export default function MovieDetailsView() {
   const { movieId } = useParams();
   const [movieData, setMovieData] = useState();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,12 +22,16 @@ export default function MovieDetailsView() {
   }, [movieId]);
 
   const handleBackClick = () => {
+    if (window.history.state.idx === 0) {
+      return;
+    }
+
     navigate(-1);
   };
 
   return (
     <div className={s.pageView}>
-      <button type="button" id={s.backBtn} onClick={handleBackClick}>
+      <button type="button" id={s.backBtn} onClick={() => handleBackClick()}>
         go back
       </button>
       {movieData && (
