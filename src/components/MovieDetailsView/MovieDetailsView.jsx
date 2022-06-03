@@ -34,9 +34,9 @@ export default function MovieDetailsView() {
   return (
     <div className={s.pageView}>
       {/* <button type="button" id={s.backBtn} onClick={() => handleBackClick()}> */}
-      {window.history.state.idx>0? (<button type="button" id={s.backBtn} onClick={() => handleBackClick()}> 
+      {window.history.state.idx>0? (<button type="button" className={s.backBtn} onClick={() => handleBackClick()}> 
         go back
-      </button>):(<button onClick={backToHome}>to homepage</button>)
+      </button>):(<button className={s.backBtn} onClick={backToHome}>to homepage</button>)
 }
       {movieData && (
         <>

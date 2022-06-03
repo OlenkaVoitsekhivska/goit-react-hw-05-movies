@@ -16,7 +16,7 @@ img {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
-#backBtn {
+.backBtn {
     background-color: pink;
     border: none;
     border-radius: 4px;
@@ -26,8 +26,8 @@ img {
     background-color: #0837d1;
 }
 
-#backBtn:hover,
-#backBtn:active {
+.backBtn:hover,
+.backBtn:active {
     cursor: pointer;
     background-color: #3659c9;
 }
