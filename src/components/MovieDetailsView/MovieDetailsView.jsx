@@ -21,19 +21,23 @@ export default function MovieDetailsView() {
     fetchMovieById(movieId).then(setMovieData);
   }, [movieId]);
 
-  const handleBackClick = () => {
-    if (window.history.state.idx === 0) {
-      return;
-    }
 
+
+  const handleBackClick = () => {
     navigate(-1);
   };
 
+  const backToHome=()=>{
+    navigate('/');
+  }
+
   return (
     <div className={s.pageView}>
-      <button type="button" id={s.backBtn} onClick={() => handleBackClick()}>
+      {/* <button type="button" id={s.backBtn} onClick={() => handleBackClick()}> */}
+      {window.history.state.idx>0? (<button type="button" id={s.backBtn} onClick={() => handleBackClick()}> 
         go back
-      </button>
+      </button>):(<button onClick={backToHome}>to homepage</button>)
+}
       {movieData && (
         <>
           <div className={s.moviePage}>
